@@ -1,0 +1,4 @@
+[submodule "organicdatascience"]
+	path = organicdatascience
+	url = https://github.com/KnowledgeCaptureAndDiscovery/organicdatascience
+	branch = Linked.Earth

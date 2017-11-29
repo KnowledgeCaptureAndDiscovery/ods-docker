@@ -1,0 +1,40 @@
+enableSemantics('localhost:8080');
+$wgEnableParserCache = false;
+$wgCachePages = false;
+$smwgCacheType = CACHE_NONE;
+
+require_once "$IP/extensions/PageObjectModel/PageObjectModel.php";
+require_once "$IP/extensions/WorkflowTasks/WorkflowTasks.php";
+$wgUseSimpleTasks=true;
+$wgDisableTracking=true;
+$wgUseLiPD=false;
+$wgCore="(E)";
+$wgOntName = "Enigma Core";
+$wgOntNS = "https://w3id.org/enigma#";
+
+$wgRunJobsAsync = true;
+$wgJobRunRate = 2000;
+
+require_once "$IP/extensions/Nuke/Nuke.php";
+
+// Groups & special rights
+$wgGroupPermissions['visitor'] = array('createtalk'=>1);
+#$wgGroupPermissions['contributor'] = array('createtalk'=>1, 'edit-page-text'=>1);
+$wgGroupPermissions['basic-editor'] = array('createpage'=>1, 'createtalk'=>1,
+        'edit-page-text'=>1, 'edit-page-metadata'=>1,
+        'edit-ontology-text'=>1);
+$wgGroupPermissions['advanced-editor'] = array('createpage'=>1, 'createtalk'=>1,
+        'edit-page-text'=>1, 'edit-page-metadata'=>1,
+        'edit-ontology-text'=>1, 'edit-ontology-semantics'=>1);
+$wgGroupPermissions['editorial-board'] = array('createpage'=>1, 'createtalk'=>1,
+        'edit-page-text'=>1, 'edit-page-metadata'=>1,
+        'edit-ontology-text'=>1, 'edit-ontology-semantics'=>1,
+        'edit-core-ontology'=>1, 'editpolicy'=>1);
+$wgGroupPermissions['sysop'] = array('createpage'=>1, 'createtalk'=>1,
+        'edit-page-text'=>1, 'edit-page-metadata'=>1,
+        'edit-ontology-text'=>1, 'edit-ontology-semantics'=>1,
+        'edit-core-ontology'=>1, 'editpolicy'=>1);
+
+$wgShowExceptionDetails = true;
+$wgShowSQLErrors = true;
+$wgDebugDumpSql = true;
