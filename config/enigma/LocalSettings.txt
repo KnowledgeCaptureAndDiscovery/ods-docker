@@ -1,3 +1,14 @@
+$wgEnableUploads = true;
+$wgFileExtensions = array( 'png', 'gif', 'jpg', 'jpeg', 'jp2', 'webp', 'ppt', 'pdf', 'psd', 'mp3', 'xls', 'xlsx', 'swf', 'doc','docx', 'odt', 'odc', 'odp', 'odg', 'mpp', 'txt', 'zip', 'csv');
+
+$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['*']['read'] = false;
+$wgGroupPermissions['user']['delete'] = true;
+$wgGroupPermissions['user']['read'] = true;
+$wgGroupPermissions['user']['suppressredirect'] = true;
+$wgGroupPermissions['user']['createaccount'] = true;
+
 enableSemantics('localhost:8080');
 $wgEnableParserCache = false;
 $wgCachePages = false;
@@ -14,6 +25,10 @@ $wgOntNS = "https://w3id.org/enigma#";
 
 $wgRunJobsAsync = true;
 $wgJobRunRate = 2000;
+
+require_once "$IP/extensions/AccessControl/AccessControl.php";
+$wgAdminCanReadAll = true;
+$wgAccessControlRedirect = false;
 
 require_once "$IP/extensions/Nuke/Nuke.php";
 

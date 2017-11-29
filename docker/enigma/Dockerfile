@@ -43,9 +43,13 @@ RUN cd $MW_HOME && php composer.phar require mediawiki/maps "*"
 RUN cd $MW_HOME && php composer.phar update --no-dev
 #RUN cd $MW_HOME && php composer.phar require scholarslab/bagit "~0.2" # For Linked Earth
 
-# Install OrganicDataScience extension
+# Patch mediawiki
+RUN sed -i "s/ns < 0/ns < -1/" $MW_HOME/includes/page/WikiPage.php
+
+# Install OrganicDataScience & extra extensions
 ADD organicdatascience $MW_HOME/extensions/WorkflowTasks
 ADD extra/PageObjectModel $MW_HOME/extensions/PageObjectModel
+ADD extra/AccessControl $MW_HOME/extensions/AccessControl
 
 # Modify LocalSettings.php
 ADD config/enigma/LocalSettings.txt /tmp/LocalSettings.txt

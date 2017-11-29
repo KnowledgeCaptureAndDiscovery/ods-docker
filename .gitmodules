@@ -2,3 +2,6 @@
 	path = organicdatascience
 	url = https://github.com/KnowledgeCaptureAndDiscovery/organicdatascience
 	branch = Linked.Earth
+[submodule "extra/AccessControl"]
+	path = extra/AccessControl
+	url = https://github.com/wikimedia/mediawiki-extensions-AccessControl
