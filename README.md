@@ -22,4 +22,4 @@ a. To test the docker image, run the following command. The wiki will be availab
 
     > docker run -it -p8080:8080 kcapd/ods-enigma
 
-b. You can bootstrap the ontology for the wiki from http://localhost:8080/wiki/index.php/Special:WTBootstrap. (Note that it could take upto 5 minutes for all the concepts & properties from the ontology to be imported onto the Wiki). Afterwards, when you create any new page, you can choose the category for the page, which creates the appropriate UI for the properties of the page to be filled out.
+b. You can bootstrap the ontology for the wiki from http://localhost:8080/wiki/index.php/Special:WTBootstrap. For enigma, it can be loaded from https://w3id.org/enigma. (Note that it could take upto 5 minutes for all the concepts & properties from the ontology to be imported onto the Wiki). Afterwards, when you create any new page, you can choose the category for the page, which creates the appropriate UI for the properties of the page to be filled out.
