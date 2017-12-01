@@ -23,8 +23,8 @@ $wgCore="(E)";
 $wgOntName = "Enigma Core";
 $wgOntNS = "https://w3id.org/enigma#";
 
-$wgRunJobsAsync = true;
-$wgJobRunRate = 2000;
+#$wgRunJobsAsync = true;
+#$wgJobRunRate = 2000;
 
 require_once "$IP/extensions/AccessControl/AccessControl.php";
 $wgAdminCanReadAll = true;

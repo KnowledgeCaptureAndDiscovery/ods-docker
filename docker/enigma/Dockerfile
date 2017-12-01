@@ -10,6 +10,7 @@ RUN apt-get -y install curl unzip git
 
 # Set environment
 ENV WIKI_NAME "Enigma"
+ENV ONT_URL "http://w3id.org/enigma"
 ENV ADMIN_USER "admin"
 ENV ADMIN_PW "admin123"
 ENV WIKI_PATH "wiki"
@@ -62,6 +63,15 @@ EXPOSE $HTTP_PORT
 
 # Configure Mysql Server
 RUN sed -i "s/\[mysqld\]/\[mysqld\]\\nskip-grant-tables/" /etc/mysql/mariadb.conf.d/*-server.cnf
+
+# Import Enigma Ontology on the wiki
+ADD scripts/import_ontology.sh /tmp/import_ontology.sh
+RUN service mysql start && \
+	service apache2 start &&  \
+	/tmp/import_ontology.sh "http://$HTTP_SERVER:$HTTP_PORT/$WIKI_PATH" "$ADMIN_USER" "$ADMIN_PW" "$ONT_URL" && \
+	php $MW_HOME/maintenance/runJobs.php && \
+	service apache2 stop && \
+	service mysql stop
 
 # Start Apache & Mysql Servers, and go to terminal
 CMD service apache2 start && service mysql start && /bin/bash
