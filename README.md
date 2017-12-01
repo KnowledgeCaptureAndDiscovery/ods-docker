@@ -3,12 +3,16 @@
 ## 1. Pull recursive
     git clone --recursive https://github.com/KnowledgeCaptureAndDiscovery/ods-docker
 
-## 2. Creating the Docker Image
+## 2. Pulling the Docker Image
+    
+    docker pull kcapd/ods-enigma
 
-a. In the same directory as this readme file run the following:
+## 3. (Optional) Creating the Docker Image yourself
+
+a. If you want to create a custom image from source, then run the following in the same directory as this readme file:
     
     docker build -f docker/enigma/Dockerfile -t kcapd/ods-enigma .
-    
+
 b. Get the id of the image that was just created for use in the next step:
 
     > docker images
@@ -16,10 +20,12 @@ b. Get the id of the image that was just created for use in the next step:
     kcapd/ods-enigma       latest              8e5888362ff4        12 minutes ago      1.27GB
 
     
-## 3. Testing the Docker Image  
+## 4. Testing the Docker Image  
 
 a. To test the docker image, run the following command. The wiki will be available at http://localhost:8080/wiki. The default admin username/password is admin/admin123.
 
     > docker run -it -p8080:8080 kcapd/ods-enigma
 
-b. You can bootstrap the ontology for the wiki from http://localhost:8080/wiki/index.php/Special:WTBootstrap. For enigma, it can be loaded from https://w3id.org/enigma. (Note that it could take upto 5 minutes for all the concepts & properties from the ontology to be imported onto the Wiki). Afterwards, when you create any new page, you can choose the category for the page, which creates the appropriate UI for the properties of the page to be filled out.
+b. You can view or bootstrap the ontology for the wiki from http://localhost:8080/wiki/index.php/Special:WTBootstrap. (For enigma, it is pre-loaded from https://w3id.org/enigma, and you don't need to import it. Note that it could take upto 5 minutes for all the concepts & properties from the ontology to be imported onto the Wiki). 
+
+c. When you create any new page, you can choose the category for the page, which creates the appropriate UI for the properties of the page to be filled out.
