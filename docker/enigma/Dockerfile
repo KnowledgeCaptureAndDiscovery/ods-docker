@@ -39,8 +39,8 @@ RUN cd $MW_HOME && php composer.phar update --no-dev
 RUN service mysql start && \
 	cd $MW_HOME && php maintenance/update.php && \
 	service mysql stop
-RUN cd $MW_HOME && php composer.phar require easyrdf/easyrdf "*"
-RUN cd $MW_HOME && php composer.phar require mediawiki/maps "*"
+RUN cd $MW_HOME && php composer.phar require easyrdf/easyrdf "*" --update-no-dev
+RUN cd $MW_HOME && php composer.phar require mediawiki/maps "*" --update-no-dev
 RUN cd $MW_HOME && php composer.phar update --no-dev
 #RUN cd $MW_HOME && php composer.phar require scholarslab/bagit "~0.2" # For Linked Earth
 
