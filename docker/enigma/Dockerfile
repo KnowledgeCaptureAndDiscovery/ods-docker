@@ -1,7 +1,7 @@
 FROM debian:stretch
 
 # Point to a local mirror if needed
-RUN sed -i 's/deb.debian.org/debianmirror.nkn.in/' /etc/apt/sources.list
+# RUN sed -i 's/deb.debian.org/debianmirror.nkn.in/' /etc/apt/sources.list
 
 # Install the apache-mysql-php stack
 RUN apt-get update
@@ -66,6 +66,9 @@ RUN sed -i "s/\[mysqld\]/\[mysqld\]\\nskip-grant-tables/" /etc/mysql/mariadb.con
 
 # Import Enigma Ontology on the wiki
 ADD scripts/import_ontology.sh /tmp/import_ontology.sh
+
+# FIXME: Import old ontology for now
+ENV ONT_URL "http://organicdatacuration.org/enigma/ontology.owl"
 RUN service mysql start && \
 	service apache2 start &&  \
 	/tmp/import_ontology.sh "http://$HTTP_SERVER:$HTTP_PORT/$WIKI_PATH" "$ADMIN_USER" "$ADMIN_PW" "$ONT_URL" && \
