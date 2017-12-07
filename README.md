@@ -1,19 +1,20 @@
 # Organic Data Science Dockerized wiki
 
-## 1. Pull recursive
-    git clone --recursive https://github.com/KnowledgeCaptureAndDiscovery/ods-docker
-
-## 2. Pulling the Docker Image
+## 1. Getting the pre-built Docker Image
     
     docker pull kcapd/ods-enigma
 
-## 3. (Optional) Creating the Docker Image yourself
+## 2. (Optional) Creating the Docker Image yourself
 
-a. If you want to create a custom image from source, then run the following in the same directory as this readme file:
+a. Get the source
+
+    git clone --recursive https://github.com/KnowledgeCaptureAndDiscovery/ods-docker
+
+b. Run the following in the same directory as this readme file:
     
     docker build -f docker/enigma/Dockerfile -t kcapd/ods-enigma .
 
-b. Get the id of the image that was just created for use in the next step:
+c. Get the id of the image that was just created for use in the next step:
 
     > docker images
     REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
