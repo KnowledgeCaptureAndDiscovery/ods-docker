@@ -21,7 +21,7 @@ c. Get the id of the image that was just created for use in the next step:
     kcapd/ods-enigma       latest              8e5888362ff4        12 minutes ago      1.27GB
 
     
-## 4. Testing the Docker Image  
+## 3. Testing the Docker Image  
 
 a. To test the docker image, run the following command. The wiki will be available at http://localhost:8080/wiki. The default admin username/password is admin/admin123.
 
